@@ -14,6 +14,9 @@
                     {{ $project->description }}
                 </p>
                 <p class="card-text">
+                    {{ $project->type->name }}
+                </p>
+                <p class="card-text">
                     <small class="text-body-secondary">
                         @if($project->visible==true)
                             Pubblicato

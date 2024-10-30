@@ -27,8 +27,23 @@
     </div>
     
     <div class="mb-3">
-        <label for="src" class="form-label">Immagine: <span class="text-danger">*</span></label>
-        <input type="textarea" class="form-control" id="src" name="src" placeholder="Inserisci un'immagine per il progetto..." required>
+        <label for="src" class="form-label">Immagine:</label>
+        <input type="textarea" class="form-control" id="src" name="src" placeholder="Inserisci un'immagine per il progetto...">
+    </div>
+
+    <div class="mb-3">
+        <label for="type_id" class="form-label">Genere:</label>
+        <select type="textarea" class="form-control" id="type_id" name="type_id" placeholder="Inserisci il genere per il progetto...">
+            <option
+            @if (old('type_id') == null)
+                selected
+            @endif value="">Selezionare un genere...</option>
+            @foreach ($types as $type)
+                <option 
+                @if (old('type_id') == $type->id)
+                    selected
+                @endif value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
     </div>
     
     <div class="mb-3 form-check">

@@ -19,6 +19,13 @@
                     {{ $project->description }}
                 </p>
                 <p class="card-text">
+                    @if (isset($project->type))
+                        {{$project->type->name}}
+                    @else
+                        -
+                    @endif
+                </p>
+                <p class="card-text">
                     <small class="text-body-secondary">
                         @if($project->visible==true)
                             Pubblicato

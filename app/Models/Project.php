@@ -14,6 +14,7 @@ class Project extends Model
         "description",
         "src",
         "visible",
+        "type_id",
     ];
 
     public function type() {
