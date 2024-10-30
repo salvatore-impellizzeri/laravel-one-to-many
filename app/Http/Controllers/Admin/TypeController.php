@@ -58,7 +58,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        return view('admin.types.edit', compact('types'));
+        return view('admin.types.edit', compact('type'));
 
     }
 
@@ -73,11 +73,10 @@ class TypeController extends Controller
             "name"=> "required|max:250",
         ]);
 
-        $type = new Type();
         $type->name = $data["name"];
         $type->update($data);
         
-        return redirect()->route('admin.types.show', compact('type'));
+        return redirect()->route('admin.types.show', ['type' => $type->id]);
 
     }
 

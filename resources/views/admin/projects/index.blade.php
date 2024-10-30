@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('main-title', 'Tutti i progetti')
+
 @section('main-content')
 
 <table class="table table-hover">
