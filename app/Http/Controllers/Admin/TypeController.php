@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Project;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+// Models
+use App\Models\Type;
 
 class TypeController extends Controller
 {
@@ -13,7 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -21,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -29,7 +32,17 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $request->validate([
+            "name"=> "required|max:250",
+        ]);
+
+        $type = new Type();
+        $type->name = $data["name"];
+        $type->save($data);
+
+        return view ('admin.types.show', compact("type"));
     }
 
     /**
@@ -37,7 +50,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -45,7 +58,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('types'));
+
     }
 
     /**
@@ -53,7 +67,18 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $data = $request->all();
+
+        $request->validate([
+            "name"=> "required|max:250",
+        ]);
+
+        $type = new Type();
+        $type->name = $data["name"];
+        $type->update($data);
+        
+        return redirect()->route('admin.types.show', compact('type'));
+
     }
 
     /**
@@ -61,6 +86,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('admin.types.index');
     }
 }
