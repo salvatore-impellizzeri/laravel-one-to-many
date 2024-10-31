@@ -29,7 +29,7 @@
     
     <div class="mb-3">
         <label for="src" class="form-label">Immagine: <span class="text-danger">*</span></label>
-        <input type="textarea" value="{{ old('src', $project->src) }}" class="form-control" id="src" name="src" placeholder="Inserisci un'immagine per il progetto..." required>
+        <input type="textarea" value="{{ old('src', $project->src) }}" class="form-control" id="src" name="src" placeholder="Inserisci un'immagine per il progetto...">
     </div>
 
     <div class="mb-3">
